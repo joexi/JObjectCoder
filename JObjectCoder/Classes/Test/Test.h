@@ -27,8 +27,8 @@
     TestProperty *property;
 }
 @property (nonatomic, assign) int testID;
-@property (nonatomic, retain) NSMutableDictionary *userInfo;
-@property (nonatomic, retain) NSMutableArray *ary;
+@property (nonatomic, retain) NSDictionary *userInfo;
+@property (nonatomic, retain) NSArray *ary;
 @end
 
 

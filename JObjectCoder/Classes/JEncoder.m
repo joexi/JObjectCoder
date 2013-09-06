@@ -66,8 +66,6 @@
 {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setValue:NSStringFromClass([object class]) forKey:Class_Key];
-    
-    unsigned int count = 0;
     Class cls = [object class];
     while(cls != [NSObject class]) {
         if ([object isKindOfClass:[NSDictionary class]]) {
@@ -82,13 +80,13 @@
             }
         }
         else if ([object isKindOfClass:[NSArray class]]) {
-            
             if (error) {
                 *error = [NSError errorWithDomain:@"" code:Error_Code_Class userInfo:nil];
             }
             //@mark TODO
         }
         else {
+            unsigned int count = 0;
             Ivar *ivars = class_copyIvarList(cls, &count);
             for (int i = 0; i < count; i++) {
                 Ivar ivar = ivars[i];
