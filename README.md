@@ -1,10 +1,12 @@
 JObjectCoder
 ============
 A lightweight framework for writing and reading object to/from local files.
+
+
 ###Provide
 * saving instance to local.
 * instantiation a local file into instance.
-* support complicate class. 
+* support complicate model-kind class (each class should derive frome NSObject). 
 * support decoding NSArray,NSDictionary object.
 * few api to remeber, easy to use.
 
