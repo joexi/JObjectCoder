@@ -5,11 +5,11 @@ A lightweight framework for writing and reading object to/from local files.
 * saving instance to local.
 * instantiation a local file into instance.
 * support complicate class. 
+* support decoding NSArray,NSDictionary object.
 * few api to remeber, easy to use.
 
 ###TODO
-* support decoding immutable NSObject(dictionary,array).
-* support decoding NSArray object.
+
 * support reference concept-same instance encoding to the same file.
 
 ###Environment
