@@ -15,7 +15,7 @@ A lightweight framework for writing and reading object to/from local files.
 
 ###TODO
 
-* support reference concept-same instance encoding to the same file.
+* support reference concept.(same instance encoding to the same file)
 
 ###Environment
  * iOS SDK 6.1
