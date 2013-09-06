@@ -10,6 +10,20 @@
 #import "JCoderConfig.h"
 @interface JEncoder : NSObject
 
+/**
+ Encode object to dictionary witch can be archived.
+ @param object origin object.
+ @param error record some error while encoding.
+ @return structured dictionary.
+ */
 + (NSDictionary *)encodeObject:(NSObject *)object error:(NSError**)error;
 
+
+/**
+ Directly encode an object and save as a file.
+ @param path path for saving.
+ @param error record some error while encoding
+ @return null.
+ */
++ (void)encodeObject:(NSObject *)object toFile:(NSString *)path error:(NSError **)error;
 @end

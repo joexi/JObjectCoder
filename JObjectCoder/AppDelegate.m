@@ -15,21 +15,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSString *path = [[PathHelper documentDirectoryPath] stringByAppendingPathComponent:@"1.txt"];
     Test *t = [[Test alloc]init];
-    NSTimeInterval time = CFAbsoluteTimeGetCurrent();
-    NSDictionary *d = [JEncoder encodeObject:t error:nil];
-    NSLog(@"%@",d);
-    NSLog(@"%f",CFAbsoluteTimeGetCurrent() - time);
-    [NSKeyedArchiver archiveRootObject:d toFile:[[PathHelper documentDirectoryPath] stringByAppendingPathComponent:@"1.txt"]];
-    NSObject *obj = [NSKeyedUnarchiver unarchiveObjectWithFile:[[PathHelper documentDirectoryPath] stringByAppendingPathComponent:@"1.txt"]];
-    
-    
-    NSLog(@"obj = %@",obj);
-    Test *tt = (Test *)[JDecoder decodeDictionary:(NSDictionary *)obj error:nil];
-    NSLog(@"%@",tt);
-    NSLog(@"%@",tt.userInfo);
-    NSLog(@"%d",[[tt.userInfo valueForKey:@"qqq"] propertyID]);
-    
+    [JEncoder encodeObject:t toFile:path error:nil];
+    Test *t2 = (Test *)[JDecoder decodeWithContentsOfFile:path error:nil];
+
+    NSLog(@"%@",t2);
+    NSLog(@"%@",t2.userInfo);
+    NSLog(@"%d",[[t2.userInfo valueForKey:@"qqq"] propertyID]);
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.

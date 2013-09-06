@@ -24,6 +24,12 @@
     return dic;
 }
 
++ (void)encodeObject:(NSObject *)object toFile:(NSString *)path error:(NSError **)error
+{
+    NSDictionary *dic = [self encodeObject:object error:error];
+    [NSKeyedArchiver archiveRootObject:dic toFile:path];
+}
+
 #pragma mark - private method
 
 + (BOOL)isValid:(id)obj

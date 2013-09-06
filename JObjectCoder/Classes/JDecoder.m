@@ -19,6 +19,12 @@
     return obj;
 }
 
++ (NSObject *)decodeWithContentsOfFile:(NSString *)path error:(NSError **)error;
+{
+    NSDictionary *dic = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    return [self decodeDictionary:dic error:error];
+}
+
 #pragma mark - private method
 + (NSObject *)objectWithDic:(NSDictionary *)dic error:(NSError **)error
 {
