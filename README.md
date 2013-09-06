@@ -12,7 +12,10 @@ A lightweight framework for writing and reading object to/from local files.
 * support decoding NSArray object.
 * support reference concept-same instance encoding to the same file.
 
-
+###Environment
+ * iOS SDK 6.1
+ * Xcode 4.6.3
+ * ARC Mode
 ###API
 * JDecoder
 
