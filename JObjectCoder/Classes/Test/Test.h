@@ -28,6 +28,7 @@
 }
 @property (nonatomic, assign) int testID;
 @property (nonatomic, retain) NSMutableDictionary *userInfo;
+@property (nonatomic, retain) NSMutableArray *ary;
 @end
 
 

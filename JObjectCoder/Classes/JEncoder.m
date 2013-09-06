@@ -35,10 +35,31 @@
 + (BOOL)isValid:(id)obj
 {
     if ([obj isKindOfClass:[NSString class]] ||
-        [obj isKindOfClass:[NSNumber class]]) {
+        [obj isKindOfClass:[NSValue class]]) {
         return YES;
     }
     return NO;
+}
+
++ (NSArray *)arrayWithObject:(NSArray *)object error:(NSError **)error
+{
+    NSMutableArray *ary = [NSMutableArray array];
+    for (NSObject *child in object) {
+        if ([self isValid:child]) {
+            [ary addObject:child];
+        }
+        else {
+            if ([child isKindOfClass:[NSArray class]]) {
+                [ary addObject:[self arrayWithObject:(NSArray *)child error:error]];
+            }
+            else {
+                NSDictionary *d = [self dictionaryWithObject:child error:error];
+                NSLog(@"%@",d);
+                [ary addObject:[self dictionaryWithObject:child error:error]];
+            }
+        }
+    }
+    return ary;
 }
 
 + (NSDictionary *)dictionaryWithObject:(NSObject *)object error:(NSError **)error
@@ -61,7 +82,10 @@
             }
         }
         else if ([object isKindOfClass:[NSArray class]]) {
-            *error = [NSError errorWithDomain:@"" code:Error_Code_Class userInfo:nil];
+            
+            if (error) {
+                *error = [NSError errorWithDomain:@"" code:Error_Code_Class userInfo:nil];
+            }
             //@mark TODO
         }
         else {
@@ -75,7 +99,12 @@
                     [dic setValue:varValue forKey:varKey];
                 }
                 else {
-                    [dic setValue:[self dictionaryWithObject:varValue error:error] forKey:varKey];
+                    if ([varValue isKindOfClass:[NSArray class]]) {
+                        [dic setValue:[self arrayWithObject:(NSArray *)varValue error:error] forKey:varKey];
+                    }
+                    else {
+                        [dic setValue:[self dictionaryWithObject:varValue error:error] forKey:varKey];
+                    }
                 }
             }
         }

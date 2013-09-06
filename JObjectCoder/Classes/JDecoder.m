@@ -26,6 +26,24 @@
 }
 
 #pragma mark - private method
++ (NSArray *)arrayWithArray:(NSArray *)ary error:(NSError **)error
+{
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSObject *value in ary) {
+        if ([value isKindOfClass:[NSDictionary class]]) {
+            [array addObject:[self objectWithDic:(NSDictionary *)value error:error]];
+        }
+        else if ([value isKindOfClass:[NSArray class]]) {
+            [array addObject:[self arrayWithArray:(NSArray *)value error:error]];
+        }
+        else
+        {
+            [array addObject:value];
+        }
+    }
+    return array;
+}
+
 + (NSObject *)objectWithDic:(NSDictionary *)dic error:(NSError **)error
 {
     Class cls = NSClassFromString([dic valueForKey:Class_Key]);
@@ -35,8 +53,11 @@
             continue;
         }
         NSObject *value = [dic valueForKey:key];
-        if ([value isKindOfClass:NSDictionary.class]) {
+        if ([value isKindOfClass:[NSDictionary class]]) {
             [obj setValue:[self objectWithDic:(NSDictionary *)value error:error] forKey:key];
+        }
+        else if ([value isKindOfClass:[NSArray class]]) {
+            [obj setValue:[self arrayWithArray:(NSArray *)value error:nil] forKey:key];
         }
         else
         {

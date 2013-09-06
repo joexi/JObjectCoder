@@ -15,14 +15,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  //  [NSError errorWithDomain:@"" code:Error_Code_Class userInfo:nil];
     NSString *path = [[PathHelper documentDirectoryPath] stringByAppendingPathComponent:@"1.txt"];
     Test *t = [[Test alloc]init];
+    NSLog(@"%@",[JEncoder encodeObject:t error:nil]);
+    
     [JEncoder encodeObject:t toFile:path error:nil];
     Test *t2 = (Test *)[JDecoder decodeWithContentsOfFile:path error:nil];
-
-    NSLog(@"%@",t2);
-    NSLog(@"%@",t2.userInfo);
-    NSLog(@"%d",[[t2.userInfo valueForKey:@"qqq"] propertyID]);
+    NSLog(@"%@",[JEncoder encodeObject:t2 error:nil]);
+//    NSLog(@"%@",t2);
+//    NSLog(@"%@",t2.userInfo);
+//    NSLog(@"%d",[[t2.userInfo valueForKey:@"qqq"] propertyID]);
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.

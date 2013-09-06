@@ -18,7 +18,6 @@
  */
 + (NSObject *)decodeDictionary:(NSDictionary *)dictionary error:(NSError **)error;
 
-
 /**
  Directly load object from local files
  @param path path of the file.
