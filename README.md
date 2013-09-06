@@ -1,11 +1,21 @@
 JObjectCoder
 ============
 A lightweight framework for writing and reading object to/from local files.
+###Provide
+* saving instance to local.
+* instantiation a local file into instance.
+* support complicate class. 
+* few api to remeber, easy to use.
+
+###TODO
+* support decoding NSMutableArray object.
+* support reference concept-same instance encoding to the same file.
+
 
 ###API
 * JDecoder
 
-```Objective-c
+```Objective-C
 /**
  Decode an Dictionary into object
  @param dictionary the dictionary after encoding an object.
@@ -26,7 +36,7 @@ A lightweight framework for writing and reading object to/from local files.
 
 * JEncoder
 
-```Objective-c
+```Objective-C
 /**
  Encode object to dictionary witch can be archived.
  @param object origin object.
@@ -45,5 +55,12 @@ A lightweight framework for writing and reading object to/from local files.
 + (void)encodeObject:(NSObject *)object toFile:(NSString *)path error:(NSError **)error;
 ```
 
+###Code Sample
+```Obejctive-C
+    NSString *path = [[PathHelper documentDirectoryPath] stringByAppendingPathComponent:@"1.txt"];
+    Test *t = [[Test alloc]init];
+    [JEncoder encodeObject:t toFile:path error:nil];
+    Test *t2 = (Test *)[JDecoder decodeWithContentsOfFile:path error:nil];
+```
 
 
