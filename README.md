@@ -8,7 +8,8 @@ A lightweight framework for writing and reading object to/from local files.
 * few api to remeber, easy to use.
 
 ###TODO
-* support decoding NSMutableArray object.
+* support decoding immutable NSObject(dictionary,array).
+* support decoding NSArray object.
 * support reference concept-same instance encoding to the same file.
 
 
