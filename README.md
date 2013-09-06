@@ -4,11 +4,14 @@ A lightweight framework for writing and reading object to/from local files.
 
 
 ###Provide
-* saving instance to local.
+* saving instance of custom class to local.
 * instantiation a local file into instance.
-* support complicate model-kind class (each class should derive frome NSObject). 
-* support decoding NSArray,NSDictionary object.
 * few api to remeber, easy to use.
+
+###Principle
+* Only suppprt the custom class whitch derives from NSObject.
+* Every propery of this class should obey rule 1.
+
 
 ###TODO
 
