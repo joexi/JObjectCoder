@@ -16,6 +16,8 @@ A lightweight framework for writing and reading object to/from local files.
  * iOS SDK 6.1
  * Xcode 4.6.3
  * ARC Mode
+ 
+
 ###API
 * JDecoder
 
