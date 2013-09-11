@@ -19,6 +19,7 @@
     t.propertyID = 1001;
     self.userInfo = [NSMutableDictionary dictionaryWithDictionary:@{@"qqq": t}];
     self.ary = [NSMutableArray arrayWithObjects:property,@(2), nil];
+
     return self;
 }
 @end

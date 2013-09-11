@@ -15,3 +15,8 @@
 
 #define Class_Key @"class"
 #define Error_Code_Class 301
+typedef enum
+{
+    JEncodingDictionary = 1,
+    JEncodingJson = 2,
+}JEncoding;

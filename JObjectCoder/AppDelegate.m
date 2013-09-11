@@ -23,10 +23,12 @@
     [JEncoder encodeObject:t toFile:path error:nil];
     Test *t2 = (Test *)[JDecoder decodeWithContentsOfFile:path error:nil];
     NSLog(@"%@",[JEncoder encodeObject:t2 error:nil]);
+//    NSData *d = [NSKeyedArchiver archivedDataWithRootObject:t];
+    
 //    NSLog(@"%@",t2);
 //    NSLog(@"%@",t2.userInfo);
 //    NSLog(@"%d",[[t2.userInfo valueForKey:@"qqq"] propertyID]);
-    
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];

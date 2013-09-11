@@ -30,6 +30,22 @@
     [NSKeyedArchiver archiveRootObject:dic toFile:path];
 }
 
++ (NSObject *)encodeObject:(NSObject *)object encoding:(JEncoding)enconding error:(NSError**)error
+{
+    switch (enconding) {
+        case JEncodingDictionary:
+        {
+            return [self encodeObject:object error:error];
+            break;
+        }
+        case JEncodingJson:
+        {
+            break;
+        }
+        default:
+            break;
+    }
+}
 #pragma mark - private method
 
 + (BOOL)isValid:(id)obj
@@ -109,5 +125,18 @@
         cls = class_getSuperclass(cls);
     }
     return dic;
+}
+
++ (NSDictionary *)encodeObject:(NSObject *)object errorHandler:(void(^)(NSError *error))errorHandler
+{
+    @try {
+        [self encodeObject:object error:nil];
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        
+    }
 }
 @end

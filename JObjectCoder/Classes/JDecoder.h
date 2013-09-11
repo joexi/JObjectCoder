@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JCoderConfig.h"
+
 @interface JDecoder : NSObject
 
 /**

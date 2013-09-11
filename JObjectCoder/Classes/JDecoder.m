@@ -12,6 +12,7 @@
 
 + (NSObject *)decodeDictionary:(NSDictionary *)dictionary error:(NSError **)error
 {
+    
     NSObject *obj = [self objectWithDic:dictionary error:error];
     if (error) {
         return nil;
