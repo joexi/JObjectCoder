@@ -1,4 +1,4 @@
-test
+~~~
 JObjectCoder
 ============
 A lightweight framework for writing and reading object to/from local files.
