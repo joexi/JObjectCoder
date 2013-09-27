@@ -30,24 +30,12 @@
     [NSKeyedArchiver archiveRootObject:dic toFile:path];
 }
 
-+ (NSObject *)encodeObject:(NSObject *)object encoding:(JEncoding)enconding error:(NSError**)error
++ (NSDictionary *)encodeObject:(NSObject *)object error:(NSError**)error configHandler:(NSDictionary *(^)(id value))configHandler
 {
-    switch (enconding) {
-        case JEncodingDictionary:
-        {
-            return [self encodeObject:object error:error];
-            break;
-        }
-        case JEncodingJson:
-        {
-            break;
-        }
-        default:
-            break;
-    }
+    return configHandler(object.class);
 }
-#pragma mark - private method
 
+#pragma mark - private method
 + (BOOL)isValid:(id)obj
 {
     if ([obj isKindOfClass:[NSString class]] ||
@@ -94,12 +82,6 @@
                     [dic setValue:[self dictionaryWithObject:value error:error] forKey:key];
                 }
             }
-        }
-        else if ([object isKindOfClass:[NSArray class]]) {
-            if (error) {
-                *error = [NSError errorWithDomain:@"" code:Error_Code_Class userInfo:nil];
-            }
-            //@mark TODO
         }
         else {
             unsigned int count = 0;

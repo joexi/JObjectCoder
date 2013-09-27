@@ -16,15 +16,15 @@
  @param error record some error while encoding.
  @return structured dictionary.
  */
-+ (NSObject *)encodeObject:(NSObject *)object encoding:(JEncoding)enconding error:(NSError**)error;
++ (NSDictionary *)encodeObject:(NSObject *)object error:(NSError**)error;
 
 /**
  Encode object to dictionary witch can be archived.
  @param object origin object.
- @param errorHandler handle the error.
+ @param configHandler handle the config.
  @return structured dictionary.
  */
-+ (NSDictionary *)encodeObject:(NSObject *)object errorHandler:(void(^)(NSError *error))errorHandler;
++ (NSDictionary *)encodeObject:(NSObject *)object error:(NSError**)error configHandler:(NSDictionary *(^)(id value))configHandler;
 
 /**
  Directly encode an object and save as a file.
@@ -34,5 +34,4 @@
  */
 + (void)encodeObject:(NSObject *)object toFile:(NSString *)path error:(NSError **)error;
 
-+ (void)encodeObject:(NSObject *)object toFile:(NSString *)path encoding:(JEncoding)enconding error:(NSError **)error;
 @end
